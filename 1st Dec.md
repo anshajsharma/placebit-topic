@@ -57,6 +57,7 @@ public:
 };
 ```
 # Surface Area of 3D Shapes
+**QLink:**  https://leetcode.com/problems/surface-area-of-3d-shapes/  
 
 ```c++
 bool check(int i,int j,int n)
@@ -99,6 +100,57 @@ public:
             }
         }
         return ans;
+    }
+};
+```
+# Largest Perimeter Triangle
+**QLink:** https://leetcode.com/problems/largest-perimeter-triangle/  
+
+```c++
+class Solution {
+public:
+    int largestPerimeter(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        int ans=0;
+        for(int i=0;i+2<(int)nums.size();i++)
+        {
+            if(nums[i+2] < nums[i]+nums[i+1]){
+                ans = nums[i]+nums[i+1]+nums[i+2];
+            }
+        }
+        return ans;
+    }
+};
+```
+# Prime Arrangements
+**QLink:** https://leetcode.com/problems/prime-arrangements/
+```c++
+bool isPrime(int n)
+{
+    if(n==1) return 0;
+    for(int i=2;i*i<=n;i++)
+        if(n%i == 0) return 0;
+    return 1;
+}
+const long mod = 1e9 + 7;
+class Solution {
+public:
+    int numPrimeArrangements(int n) {
+        long long fact[101];
+        fact[0] = 1;
+        for(int i=1;i<101;i++)
+        {
+            fact[i] = i * fact[i-1];
+            fact[i]%=mod;
+        }
+        int numberOfPrimes = 0;
+        for(int i=1;i<=n;i++)
+        {
+            if(isPrime(i)) numberOfPrimes++;
+        }
+        
+        return (fact[numberOfPrimes] * fact[n-numberOfPrimes])%mod;
+        
     }
 };
 ```
