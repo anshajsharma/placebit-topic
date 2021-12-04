@@ -67,3 +67,44 @@ bool canPair(vector<int> nums, int k) {
     return f;
 }
 ```
+# Find Common Characters
+**QLink:** https://leetcode.com/problems/find-common-characters/
+
+```c++
+class Solution {
+public:
+    vector<string> commonChars(vector<string>& words) {
+        int n = words.size();
+        
+        map<int,int> m[n];
+        for(int i=0;i<n;i++)
+        {
+            for(auto j:words[i]) {
+                m[i][j-'a']++;
+            }
+        }
+        map<int,int> t;
+        for(int i=0;i<26;i++)
+        {
+            int mini = INT_MAX;
+            for(int j=0;j<n;j++)
+            {
+                mini = min(mini,m[j][i]);
+            }
+            if(mini) t[i] = mini;
+        }
+        vector<string> ans;
+        for( auto i: t )
+        {
+            int c = i.second;
+            while(c--){
+                string temp = "";
+                temp += char(i.first+'a');
+                ans.push_back(temp);
+            }
+        }
+        return ans;
+    }
+};
+```
+
