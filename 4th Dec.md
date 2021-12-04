@@ -42,3 +42,28 @@ class Solution{
     } 
 };
 ```
+# Array Pair Sum Divisibility Problem 
+**QLink:** https://practice.geeksforgeeks.org/problems/array-pair-sum-divisibility-problem3257/1
+
+```c++
+bool canPair(vector<int> nums, int k) {
+    // Code here.
+    map<int,int> m;
+    for(auto i:nums)
+    {
+        m[i%k]++;
+    }
+    int f=1;
+    for(int i=0;i<k;i++)
+    {
+        if(i==0){
+         if(m[i] & 1) f=0;   
+        }else if(k%2 == 0 && i == k/2){
+            if(m[i] & 1) f=0; 
+        }else{
+            if(m[i] != m[k-i]) f=0;
+        }
+    }
+    return f;
+}
+```
