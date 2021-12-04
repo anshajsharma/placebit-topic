@@ -146,3 +146,53 @@ public:
 };
 ```
 
+# Remove Outermost Parentheses
+**QLink:** https://leetcode.com/problems/remove-outermost-parentheses/
+
+```c++
+class Solution {
+public:
+    string removeOuterParentheses(string s) {
+        stack<int> st;
+        string ans="";
+        for(int i=0;i<s.size();i++)
+        {
+            if(st.empty()||s[i]=='('){
+                st.push(i);
+            }else if( s[st.top()] == '(' && s[i] == ')' ){
+                if(st.size() == 1){
+                    for(int j=st.top()+1;j<i;j++){
+                        ans += s[j];
+                    }
+                }   
+                st.pop();
+            }
+        }
+        
+        return ans;
+        
+    }
+};
+```
+# Daily Temperatures
+**QLink:** https://leetcode.com/problems/daily-temperatures/
+
+```c++
+class Solution {
+public:
+    vector<int> dailyTemperatures(vector<int>& t) {
+        int n=t.size();
+        vector<int> ans(n,0);
+        stack<int> s;
+        for(int i=n-1;i>=0;i--){
+            while(!s.empty() && t[s.top()] <= t[i])
+                s.pop();
+            if(!s.empty()){
+                ans[i] = s.top() - i; 
+            }
+            s.push(i);
+        }
+        return ans;
+    }
+};
+```
