@@ -106,5 +106,43 @@ public:
         return ans;
     }
 };
+
+// Type 2
+class Solution {
+public:
+    vector<string> commonChars(vector<string>& words) {
+        int n = words.size();
+        map<int,int> t;
+        for(int i='a';i<='z';i++)
+        {
+            char reqChar = char(i);
+            int mini = INT_MAX;
+            for(int j=0;j<words.size();j++)
+            {
+                int c=0;
+                for(int k=0;k<words[j].size();k++)
+                {
+                    if(words[j][k] == reqChar) c++;
+                }
+                mini = min(mini,c);
+            }
+            
+            if(mini) t[i-'a']=mini;
+                
+        }
+        
+        vector<string> ans;
+        for( auto i: t )
+        {
+            int c = i.second;
+            while(c--){
+                string temp = "";
+                temp += char(i.first+'a');
+                ans.push_back(temp);
+            }
+        }
+        return ans;
+    }
+};
 ```
 
