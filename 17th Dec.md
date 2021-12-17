@@ -149,11 +149,36 @@ class Solution{
     }
 };
 ```
-# 
-**QLink:**
+# Longest Common Prefix in an Array 
+**QLink:** https://practice.geeksforgeeks.org/problems/longest-common-prefix-in-an-array5129/1#
 
 ```c++
-
+class Solution{
+  public:
+    
+    string longestCommonPrefix (string arr[], int N)
+    {
+        // your code here
+        string ans="";
+        for(int i=0;;i++)
+        {
+            int f=1;
+            if(i>=arr[0].size()) break;
+            for(int j=1;j<N;j++)
+            {
+                if( arr[j].size() > i && arr[j][i] == arr[0][i]) ;
+                else f=0;
+            }
+            if(f==1){
+                ans += arr[0][i];
+            }else{
+                break;
+            }
+        }
+        if(ans=="") return "-1";
+        return ans;
+    }
+};
 ```
 # 
 **QLink:**
