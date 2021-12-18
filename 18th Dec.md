@@ -37,9 +37,21 @@ int setKthBit(int N, int K)
 }
 ```
 
-#
-**QLink:**
+# Bit Difference 
+**QLink:** https://practice.geeksforgeeks.org/problems/bit-difference-1587115620/1
 
 ```c++
+int countBitsFlip(int a, int b){
 
+    // Your logic here
+    int c = a^b;
+    int ans=0;
+    while(c>0)
+    {
+        if(c%2) ans++;
+        c/=2;
+    }
+
+    return ans;
+}
 ```
