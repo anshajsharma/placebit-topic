@@ -96,3 +96,31 @@ public:
     }
 };
 ```
+# Happy Number
+
+```c++
+int sumOfSquareOfDigits(int n)
+{
+    int sum=0;
+    while(n>0){
+        sum+=((n%10)*(n%10));
+        n/=10;
+    }
+    return sum;
+}
+class Solution {
+public:
+    bool isHappy(int n) {
+        map<int,int> m;
+        int currSum = n;
+        while(1){
+            currSum = sumOfSquareOfDigits(currSum);
+            m[currSum]++;
+            if(currSum==1) return true;
+            else if(m[currSum] > 1) return false;
+        }
+        return false;
+    }
+};
+```
+
