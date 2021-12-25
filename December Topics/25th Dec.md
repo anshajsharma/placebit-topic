@@ -64,3 +64,35 @@ void solve()
 
 }
 ```
+
+# 953. Verifying an Alien Dictionary
+**QLink:** https://leetcode.com/problems/verifying-an-alien-dictionary/
+
+```c++
+class Solution {
+public:
+    bool isAlienSorted(vector<string>& s, string o) {
+        map<char,char> m;
+        for(int i=0;i<26;i++)
+        {
+            m[o[i]] = char(i+'a');
+        }
+        for(int i=0;i<s.size();i++)
+        {
+            string temp="";
+            for(auto j:s[i])
+            {
+                temp += m[j];
+            }
+            s[i] = temp;
+        }
+        
+        for(int i=1;i<s.size();i++)
+        {
+            if(s[i] < s[i-1]) return false;
+        }
+        return true;
+        
+    }
+};
+```
