@@ -78,3 +78,52 @@ void solve()
   cout<<fibRecurMemo(n)<<endl;
 }
 ```
+
+# Subset Sum equals k using recursion
+
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+
+ll fib[100];
+int n;
+void subSethavingSumk(int index,vector<int> &originalV,vector<int> currVec,int sum)
+{
+
+  if(index == n){
+    int vecSum = 0;
+    for(auto i:currVec) vecSum+=i;
+    if(sum == vecSum){
+      for(auto i:currVec) cout<<i<<" ";
+      cout<<endl;
+    }
+
+    return;
+  }
+
+  subSethavingSumk(index+1,originalV,currVec,sum);
+
+  currVec.push_back(originalV[index]);
+
+  subSethavingSumk(index+1,originalV,currVec,sum);
+
+}
+
+
+
+
+void solve()
+{
+
+  cin>>n;
+
+  vector<int> v(n);
+  for(auto &i:v) cin>>i;
+
+  vector<int> temp;
+  subSethavingSumk(0,v,temp,7);
+}
+```
+
