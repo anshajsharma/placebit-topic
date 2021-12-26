@@ -89,6 +89,7 @@ typedef long long ll;
 
 ll fib[100];
 int n;
+// O(n*2^n)
 void subSethavingSumk(int index,vector<int> &originalV,vector<int> currVec,int sum)
 {
 
