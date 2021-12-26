@@ -1,3 +1,27 @@
+# Nth Magical Number
+**QLink:** https://leetcode.com/problems/nth-magical-number/
+```c++
+class Solution {
+public:
+    int nthMagicalNumber(int n, int a, int b) {
+        long ans = 0;
+        long low = 2,high = 1e14;
+        while(low <= high)
+        {
+            long mid = (low+high)/2;
+            long numberInSetTillMid = mid/a + mid/b - (mid*__gcd(a,b))/(a*b);
+            if(numberInSetTillMid>=n){
+                ans = mid;
+                high = mid - 1;
+            }else{
+                low = mid + 1;
+            }
+        }
+        int mod = 1e9 + 7;
+        return ans%(mod);
+    }
+};
+```
 # Recursion Introduction
 
 ```c++
