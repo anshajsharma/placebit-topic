@@ -111,9 +111,6 @@ void subSethavingSumk(int index,vector<int> &originalV,vector<int> currVec,int s
 
 }
 
-
-
-
 void solve()
 {
 
