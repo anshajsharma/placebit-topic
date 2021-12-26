@@ -124,4 +124,26 @@ void solve()
   subSethavingSumk(0,v,temp,7);
 }
 ```
-
+# Special Keyboard 
+**QLink:** https://practice.geeksforgeeks.org/problems/special-keyboard3018/1#
+```c++
+class Solution{
+public:
+    long long int optimalKeys(int N){
+        // code here
+        vector<int> dp(N+1,0);
+        dp[1] = 1;
+        dp[2] = 2;
+        dp[3] = 3;
+        for(int i=4;i<=N;i++)
+        {
+            dp[i] = i;
+            for(int j=i-3;j>=1;j--)
+            {
+                dp[i] = max(dp[i],dp[j]*(i-j-1));
+            }
+        }
+        return dp[N];
+    }
+};
+```
