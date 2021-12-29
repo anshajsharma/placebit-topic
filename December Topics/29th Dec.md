@@ -65,3 +65,35 @@ class Solution
     }
 };
 ```
+# Merge two sorted linked lists
+**QLink:** https://practice.geeksforgeeks.org/problems/merge-two-sorted-linked-lists/1
+
+```c++
+Node* sortedMerge(Node* head1, Node* head2)  
+{  
+    // code here
+    if(!head1) return head2;
+    if(!head2) return head1;
+    Node *ans,*currPointer = new Node(0) ,*temp;
+    ans = currPointer;
+    while(head1 && head2){
+        if(head1->data > head2->data){
+            temp = head2;
+            head2 = head2->next;
+            currPointer->next = temp;
+            currPointer = temp;
+            temp -> next = NULL;
+        }else{
+            temp = head1;
+            head1 = head1->next;
+            currPointer->next = temp;
+            currPointer = temp;
+            temp -> next = NULL; 
+        }
+    }
+    if(head1) currPointer->next = head1;
+    if(head2) currPointer->next = head2;
+    return ans->next;
+    
+}  
+```
