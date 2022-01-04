@@ -197,3 +197,34 @@ void solve()
 
 }
 ```
+# Deque
+
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+void showdq(deque <int> g)
+{
+    deque <int> :: iterator it;
+    for (it = g.begin(); it != g.end(); ++it)
+        cout << '\t' << *it;
+    cout << '\n';
+}
+void solve()
+{
+  
+  deque<int> dq;
+
+  dq.push_back(5);
+  dq.push_front(1);
+  dq.push_back(6);
+  dq.push_front(8);
+  showdq(dq);
+  dq.pop_front();
+  showdq(dq);
+  dq.pop_back();
+  showdq(dq);
+
+}
+```
