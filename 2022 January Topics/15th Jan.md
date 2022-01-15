@@ -55,3 +55,24 @@ public:
 };
 ```
 
+# Convert Sorted Array to Binary Search Tree
+**QLink:** https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+```c++
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(p->val > q->val) swap(p,q);
+        TreeNode *temp = root;
+        while(1){
+            if(temp->val > q->val){
+                temp = temp->left;
+            }else if(temp->val < p->val){
+                temp = temp->right;
+            }else{
+                return temp;
+            }
+        }
+    }
+};
+```
+
