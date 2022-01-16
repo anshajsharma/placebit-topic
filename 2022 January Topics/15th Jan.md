@@ -55,7 +55,7 @@ public:
 };
 ```
 
-# Convert Sorted Array to Binary Search Tree
+# LCA in BT
 **QLink:** https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
 ```c++
 class Solution {
