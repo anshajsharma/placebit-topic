@@ -57,4 +57,15 @@ public:
         return LCA(root,a,b);
     }
 };
+
+// ----------------------- TYPE 3 --------------------
+bool printPath(node *root,int k)
+{
+  if(!root) return 0;
+  bool l = printPath(root->left,k);
+  bool r = printPath(root->right,k);
+  if(l||r||root->data == k) cout<<root->data<<" ";
+
+  return l||r||(root->data == k);
+}
 ```
