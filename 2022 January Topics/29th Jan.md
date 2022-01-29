@@ -70,3 +70,53 @@ void solve()
 
 }
 ```
+
+# Priority Queue STL( Max Heap )
+
+```c++
+void solve()
+{
+
+  priority_queue<int> pq;
+
+  pq.push(10);
+  pq.push(5);
+  pq.push(15);
+
+  cout<<pq.top()<<"\n";
+  cout<<pq.size()<<"\n";
+  cout<<pq.empty()<<"\n";
+  pq.pop();
+  cout<<pq.top()<<"\n";
+}
+```
+# Priority Queue STL( Min Heap )
+
+```c++
+void solve()
+{
+  vector<int> v = {1,5,8,4,1,6,2,8};
+
+  // sort(v.begin(), v.end());
+
+  // Decreasing Order
+  // sort(v.rbegin(), v.rend());
+  sort(v.begin(), v.end(), greater<int>());
+
+  for(auto i:v) cout<<i<<" ";
+
+  cout<<"\n";
+
+  priority_queue<int,vector<int>,greater<int> > pq;
+
+  pq.push(10);
+  pq.push(5);
+  pq.push(15);
+
+  cout<<pq.top()<<"\n";
+  cout<<pq.size()<<"\n";
+  cout<<pq.empty()<<"\n";
+  pq.pop();
+  cout<<pq.top()<<"\n";
+}
+```
