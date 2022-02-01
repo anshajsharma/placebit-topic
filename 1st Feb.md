@@ -99,3 +99,30 @@ vector<int> kthLargest(int k, int arr[], int n) {
     return ans;
 }
 ```
+
+# Last Stone Weight
+
+```c++
+class Solution {
+public:
+    int lastStoneWeight(vector<int>& stones) {
+        priority_queue<int> pq;
+        for(auto i:stones) pq.push(i);
+        
+        int ans=0;
+        
+        while(pq.size()>1){
+            int y = pq.top();
+            pq.pop();
+            int x = pq.top();
+            pq.pop();
+            if(x!=y) pq.push(y-x);
+        }
+        
+        if(pq.size()) ans = pq.top();
+        
+        return ans;
+        
+    }
+};
+```
