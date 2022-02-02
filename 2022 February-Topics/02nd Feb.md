@@ -36,3 +36,52 @@ string reorganizeString(string s) {
     return ans;
 }
 ```
+
+# Nth Magical Number
+```c++
+#include <bits/stdc++.h>
+typedef long long ll;
+ll check(vector<int> &p,long mid)
+{
+    ll n = p.size();
+    ll ans=0;
+    for(int i=1;i<1<<n;i++)
+    {
+        ll prod = 1,c=0;
+        for(int j=0;j<n;j++)
+        {
+            if(i>>j & 1) {
+                c++;
+                if(prod<=mid){
+                    prod = (prod*p[j])/__gcd(prod,1ll*p[j]);
+                }
+            }
+        }
+        if(c%2) ans += (mid/prod);
+        else ans -= (mid/prod);
+    }
+    // cout<<ans<<" "<<mid<<" ";
+    return ans;
+}
+class Solution {
+public:
+    int nthMagicalNumber(int n, int a, int b) {
+        long ans = 0;
+        long low = 2,high = 1e14;
+        vector<int> v = {a,b};
+        while(low <= high)
+        {
+            long mid = (low+high)/2;
+            long numberInSetTillMid = check(v,mid);
+            if(numberInSetTillMid>=n){
+                ans = mid;
+                high = mid - 1;
+            }else{
+                low = mid + 1;
+            }
+        }
+        int mod = 1e9 + 7;
+        return ans%(mod);
+    }
+};
+```
