@@ -145,3 +145,47 @@ public:
     }
 };
 ```
+
+# Split Array
+
+```c++
+bool check(vector<int> &v,int m,int mid)
+{
+    int currSum  = 0;
+    int n = v.size();
+    
+    int i=0;
+    int noOfSplits = 0;
+    while(i<n){
+        currSum += v[i];
+        if(currSum>mid){
+            noOfSplits++;
+            currSum = 0;
+            continue;
+        }
+        i++;
+    }
+    noOfSplits++; 
+    return noOfSplits <= m; 
+}
+
+class Solution {
+public:
+    int splitArray(vector<int>& nums, int m) {
+        int low=*max_element(nums.begin(),nums.end());
+        int high = 1e9;
+        int ans = 1e9;
+        while(low<=high){
+            int mid = low + (high-low)/2;
+            if(check(nums,m,mid)){
+                ans = mid; // 
+                high = mid-1;
+            }else{
+                low = mid + 1;
+            }
+        }
+        
+        return ans;
+    }
+};
+```
