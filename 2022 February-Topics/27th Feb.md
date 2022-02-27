@@ -51,3 +51,42 @@ int main()
     return 0;   
 }
 ```
+
+
+# Longest Palindromic Sunsequence
+```c++
+class Solution {
+public:
+    int longestPalindromeSubseq(string s) {
+        int n=s.size();
+        vector<vector<int>> dp(n,vector<int>(n,0));
+        
+        // subseq of size 1
+        for(int i=0;i<n;i++) dp[i][i] = 1;
+        
+        // subseq of size 2
+        for(int i=0;i<n-1;i++) if(s[i]==s[i+1]) dp[i][i+1] = 2; else dp[i][i+1] = 1;
+        
+        int colStart = 2;
+        
+        while(colStart<n)
+        {
+            
+            int i = 0, j = colStart;
+            
+            while(j<n)
+            {
+                if(s[i]==s[j]){
+                    dp[i][j] = 2 + dp[i+1][j-1];
+                }else{
+                    dp[i][j] = max(dp[i][j-1],dp[i+1][j]);
+                }
+                i++; j++;
+            }
+            
+            colStart++;
+        }
+        return dp[0][n-1];
+    }
+};
+```
