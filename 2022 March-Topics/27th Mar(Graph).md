@@ -185,3 +185,46 @@ int main()
 }
 
 ```
+
+# Detect the cycle using bfs
+https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1#
+```c++
+// bfs implementation
+int f=0;
+
+void bfs(int root,vector<int> adj[],vector<int> &vis)  
+{
+  if(vis[root]) return;
+  vis[root] = 1;
+  queue<pair<int,int>> Q;
+  Q.push({root,-1});
+
+  while(!Q.empty()){
+    int currNode = Q.front().first;
+    int parent = Q.front().second;
+    Q.pop();
+    for(auto child:adj[currNode])
+    {
+      if( vis[child] == 1 && child != parent ) f=1;
+      if(vis[child]==0){
+        vis[child] = 1;
+        Q.push({child,currNode});
+      }
+    }
+  }
+}
+
+class Solution {
+  public:
+    // Function to detect cycle in an undirected graph.
+    bool isCycle(int V, vector<int> adj[]) {
+        // Code here
+        f=0;
+        vector<int> vis(V+10,0);
+        for(int i=0;i<V;i++)
+            if(!vis[i]) bfs(i,adj,vis); 
+    
+        return f;
+    }
+};
+```
